@@ -1,0 +1,12 @@
+#!/usr/bin/expect
+set username [lindex $argv 0]
+set userpwd [lindex $argv 1]
+set serverip [lindex $argv 2]
+set timeout 30
+spawn ssh-copy-id -i /home/alei/.ssh/id_rsa.pub $username@$serverip
+expect {
+      timeout exit
+      yes/no  {send "yes\r";exp_continue}
+      password {send "$userpwd\r"}
+       }
+interact
