@@ -19,4 +19,6 @@ do
     else
            echo $ip >> $failedfile
     fi
+	
+	
 done
